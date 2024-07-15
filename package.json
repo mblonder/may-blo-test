@@ -1,0 +1,129 @@
+{
+  "name": "vitepress-shopware-docs",
+  "version": "1.1.41",
+  "description": "Vitepress theme for Shopware",
+  "main": "src/index.ts",
+  "exports": {
+    ".": "./src/index.ts",
+    "./config": "./src/shopware/config/baseConfig.js",
+    "./highlight": "./src/shopware/config/highlight.js",
+    "./src/*.css": {
+      "import": "./src/*.css",
+      "require": "./src/*.css"
+    },
+    "./src/*.scss": {
+      "import": "./src/*.scss",
+      "require": "./src/*.scss"
+    }
+  },
+  "files": [
+    "src",
+    "types"
+  ],
+  "keywords": [
+    "vue",
+    "shopware",
+    "vitepress"
+  ],
+  "author": {
+    "name": "Shopware team"
+  },
+  "license": "MIT",
+  "scripts": {
+    "lint:full": "pnpm run lint && pnpm run type",
+    "lint": "prettier --check --write --parser typescript \"{__tests__,docs,src,types}/**/*.ts\"",
+    "lint:fail": "prettier --check --parser typescript \"{__tests__,docs,src,types}/**/*.ts\"",
+    "type": "tsc --noEmit",
+    "test:unit": "vitest run -r __tests__/unit --sequence.shuffle",
+    "test:cli": "vitest run -r __tests__/cli --sequence.shuffle",
+    "test:cli:coverage": "vitest run -r __tests__/cli --coverage",
+    "dev": "vitepress dev demo",
+    "build": "vitepress build demo",
+    "serve": "pnpm run build && vitepress serve demo --port 5002",
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build",
+    "chromatic": "npx chromatic --exit-zero-on-changes",
+    "bump": "npx lerna version --no-private --no-push",
+    "cli:dev": "pnpm -C ./packages/cli dev && chmod +x ./packages/cli/dist/docs-cli.js",
+    "cli:build": "pnpm -C ./packages/cli build && chmod +x ./packages/cli/dist/docs-cli.js",
+    "cli:pkg": "pnpm -C ./packages/cli pkg"
+  },
+  "dependencies": {
+    "@iconify-json/carbon": "^1.1.24",
+    "@shopware-ag/meteor-icon-kit": "^5.2.0",
+    "@stoplight/elements-dev-portal": "^2.0.0",
+    "@stoplight/json-schema-generator": "^1.0.2",
+    "@vueuse/core": "^10.7.0",
+    "axios": "^1.6.2",
+    "body-scroll-lock": "^3.1.5",
+    "fs-extra": "^11.2.0",
+    "fsevents": "^2.3.3",
+    "gray-matter": "^4.0.3",
+    "medium-zoom": "^1.1.0",
+    "normalize.css": "^8.0.1",
+    "semver": "^7.6.2",
+    "shiki": "^1.0.0",
+    "unocss": "^0.58.0"
+  },
+  "peerDependencies": {
+    "@docsearch/css": "^3.5.2",
+    "@docsearch/js": "^3.5.2",
+    "algoliasearch": "^4.20.0",
+    "instantsearch.css": "^8.1.0",
+    "instantsearch.js": "^4.61.0",
+    "vue-instantsearch": "^4.13.0"
+  },
+  "devDependencies": {
+    "@storybook/addon-essentials": "^7.6.17",
+    "@storybook/addon-interactions": "^7.6.17",
+    "@storybook/addon-links": "^7.6.17",
+    "@storybook/addon-styling": "^1.3.7",
+    "@storybook/blocks": "^7.6.17",
+    "@storybook/testing-library": "^0.2.2",
+    "@storybook/vue3": "^7.6.17",
+    "@storybook/vue3-vite": "^7.6.17",
+    "@types/body-scroll-lock": "^3.1.2",
+    "@types/estree": "^1.0.5",
+    "@types/fs-extra": "^11.0.4",
+    "@types/markdown-it": "^13.0.7",
+    "@types/node": "^20.10.4",
+    "@types/remove-markdown": "^0.3.4",
+    "@vitejs/plugin-vue": "^5.0.2",
+    "@vueuse/shared": "10.9.0",
+    "chromatic": "^11.0.0",
+    "esbuild": "^0.20.0",
+    "get-port": "^7.0.0",
+    "google-fonts-helper": "^3.4.1",
+    "lerna": "^8.0.0",
+    "lorem-ipsum": "^2.0.8",
+    "prettier": "^3.1.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "remove-markdown": "^0.5.0",
+    "sass": "^1.69.5",
+    "seedrandom": "^3.0.5",
+    "storybook": "^7.6.17",
+    "storybook-addon-fetch-mock": "^2.0.0",
+    "storybook-addon-pseudo-states": "^2.1.2",
+    "terser": "^5.25.0",
+    "typescript": "^5.3.3",
+    "unbuild": "^2.0.0",
+    "vitepress": "1.0.0-rc.45",
+    "vitest": "^1.0.1",
+    "vue": "^3.3.10"
+  },
+  "packageManager": "pnpm@8.11.0",
+  "pnpm": {
+    "peerDependencyRules": {
+      "ignoreMissing": [
+        "@algolia/client-search",
+        "react",
+        "react-dom",
+        "vite",
+        "@types/react",
+        "mkdirp",
+        "@stoplight/mosaic-code-viewer"
+      ]
+    }
+  }
+}
